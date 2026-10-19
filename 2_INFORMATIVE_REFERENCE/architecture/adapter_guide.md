@@ -167,6 +167,5 @@ result = interceptor.intercept(
 > **Contributing:** To add a new adapter, implement the `OdgsAdapter` ABC and use the `AdapterRegistry` to deterministically inject it into your internal Airflow or PySpark environments.
 
 ---
-> **Require architectural clearance or SLA support for your organization?** [Consult the Sovereign S-Cert Registry](https://metricprovenance.com/brief).
 
-[< Back to README](/README.md) | [Documentation Map →](index.md) | 🎯 [Watch the demo →](https://www.metricprovenance.com/watch)
+[< Back to README.md](../../README.md) | [Documentation Map →](index.md)

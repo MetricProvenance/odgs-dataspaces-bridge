@@ -273,6 +273,50 @@
       "framework_tags": {},
       "effective_from": "2024-01-01",
       "effective_until": null
+    },
+    {
+      "context_id": "urn:odgs:process:integration_test",
+      "description": "Integration Test Context",
+      "required_metrics": [],
+      "rules": [
+        "urn:odgs:rule:2007"
+      ],
+      "effective_from": "2024-01-01",
+      "effective_until": null
+    },
+    {
+      "context_id": "urn:odgs:process:unbound_test",
+      "description": "Unbound Test Context",
+      "required_metrics": [],
+      "rules": [],
+      "effective_from": "2024-01-01",
+      "effective_until": null
+    },
+    {
+      "context_id": "urn:odgs:process:no_blocking_rules",
+      "description": "No Blocking Rules Context",
+      "required_metrics": [],
+      "rules": [
+        "urn:odgs:rule:2001"
+      ],
+      "effective_from": "2024-01-01",
+      "effective_until": null
+    },
+    {
+      "context_id": "urn:odgs:process:pipeline_test_pass",
+      "description": "Pipeline Test Pass Context",
+      "required_metrics": [],
+      "rules": [],
+      "effective_from": "2024-01-01",
+      "effective_until": null
+    },
+    {
+      "context_id": "urn:fake:process",
+      "description": "Fake Process Context",
+      "required_metrics": [],
+      "rules": [],
+      "effective_from": "2024-01-01",
+      "effective_until": null
     }
   ]
 }

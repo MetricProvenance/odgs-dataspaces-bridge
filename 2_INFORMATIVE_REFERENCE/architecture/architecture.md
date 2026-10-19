@@ -3,7 +3,6 @@
 **Version:** 6.0.0
 **Type:** Normative
 
-> **Require architectural clearance or SLA support for your organization?** [Consult the Sovereign S-Cert Registry](https://metricprovenance.com/brief).
 
 ## 1. Abstract
 The Open Data Governance Standard (ODGS) defines a **Hierarchical Constitutional Stack** for Data Governance. It strictly separates the Definition of Data (Legislative Plane) from the Execution of Data (Physical Plane), functioning as a headless **Sovereign Validation Engine** that parses arbitrary text-based agreements into mechanical constraints.
@@ -104,6 +103,5 @@ The system exposes a lightweight FastAPI interface (`2_INFORMATIVE_REFERENCE/src
 *   **ISO/IEC 42001**: Control B.7 (Data Management).
 
 ---
-> **Require architectural clearance or SLA support for your organization?** [Consult the Sovereign S-Cert Registry](https://metricprovenance.com/brief).
 
-[< Back to README.md](/README.md) | [Documentation Map →](index.md) | 🎯 [Watch the demo →](https://www.metricprovenance.com/watch)
+[< Back to README.md](../../README.md) | [Documentation Map →](index.md)

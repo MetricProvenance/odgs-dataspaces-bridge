@@ -1,0 +1,33 @@
+site_name: "ODGS Dataspace Enforcement & S-Cert Bridge"
+site_description: "Vendor-Neutral Runtime Policy Enforcement & Semantic Certification Bridge for W3C ODRL 2.2, Eclipse CAP/DRP, Gaia-X DTA, and IDSA"
+copyright: "Apache-2.0 License · ODGS Dataspace Bridge Contributors"
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: teal
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+
+nav:
+  - Overview: index.md
+  - Eclipse EDWG (CAP v2.2.1 & DRP): eclipse-edwg.md
+  - Gaia-X (ODRL-VC & DTA Phase 6): gaia-x-dta.md
+  - IDSA Rulebook, W3C PROV-O & NIST OSCAL: idsa-prov-oscal.md
+  - LinkML & JSON Schemas: schemas-and-linkml.md
