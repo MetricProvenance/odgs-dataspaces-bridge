@@ -4,9 +4,9 @@
 
 # TECHNICAL SPECIFICATION: THE ODGS PROTOCOL
 
-**SUBJECT:** Runtime Enforcement, Data Sovereignty & ISO 42001 Alignment
-**VERSION:** 6.0.0 (Sovereign Validation Engine)
-**DATE:** March 2026
+**SUBJECT:** Runtime Semantic Policy Enforcement, Dataspace Interoperability & Cryptographic Attestation (`S-Cert`)
+**VERSION:** 6.1.0
+**DATE:** October 2026
 **DOI:** 10.5281/zenodo.18564270
 **CLASSIFICATION:** Public Specification
 
@@ -14,15 +14,17 @@
 
 ## 1. ABSTRACT
 
-The Open Data Governance Standard (ODGS) resolves the "Definition-Execution Gap" in High-Risk AI systems — the structural disconnect between what data governance *says* and what data pipelines *do*. It provides a vendor-neutral protocol to enforce **Administrative Safety** by strictly separating Policy (The Legislative Plane) from Execution (The Physical Plane).
+The Open Data Governance Standard (ODGS) resolves the "Definition-Execution Gap" in enterprise data pipelines and high-risk AI systems — the structural disconnect between what data governance *says* and what data pipelines *do*. It provides a vendor-neutral protocol to enforce **Administrative Safety** by strictly separating Policy (Planes I–III) from Contextual Process Binding (Plane IV) and Runtime Execution (Plane V).
 
-This document outlines the core architecture of the v6.0.0 release. It builds on the v5 Universal Validation Primitive with six deterministic engine enhancements — SOFT_STOP override-able severity, batch evaluation, rule dependency chains (DAG), webhook event emission, conformance self-checks, and rule versioning — collectively forming the "Sovereign Validation Engine" pattern:
+This document outlines the core architecture of the v6.1.0 release, grounding its deterministic engine capabilities — `SOFT_STOP` override-able severity, batch evaluation, rule dependency chains (DAG), webhook event emission, conformance self-checks, rule versioning, and Phase 6 dataspace runtime enforcement (`W3C ODRL 2.2`, `Eclipse CAP v2.2.1`, `Gaia-X DTA`) — in international standards:
 
 | Standard | Articles/Clauses | ODGS Implementation |
 |---|---|---|
-| EU AI Act (2024/1689) | Articles 10, 12 | Data Quality + Automatic Event Recording |
-| ISO/IEC 42001:2023 | Clauses 4–10, Controls B.4–B.10 | AI Management System |
-| GDPR (2016/679) | Articles 5, 25, 30 | Privacy-Native Architecture |
+| ISO/IEC 38505-1:2026 & TR 38505-2 | Evaluate — Direct — Monitor | Contextual Process Bindings (`context_bindings.json`) |
+| ISO/IEC 25012:2008 & ISO 8000-8 | 15 Inherent & System-Dependent Characteristics | 60 Data Quality Dimensions (`standard_dq_dimensions.json`) |
+| EU AI Act (2024/1689) | Articles 10, 12 | Data Quality Enforcement + Automatic Event Recording (`S-Cert`) |
+| ISO/IEC 42001:2023 | Clauses 4–10, Controls B.4–B.10 | AI Management System Alignment |
+| GDPR (2016/679) | Articles 5, 25, 30 | Zero-Knowledge Cryptographic Attestation |
 
 ---
 
@@ -163,9 +165,9 @@ To ensure runtime integrity without active network dependency, the Engine verifi
 
 ---
 
-## 5. THE v6.0.0 SOVEREIGN ENGINE ENHANCEMENTS
+## 5. CORE RUNTIME ENGINE CAPABILITIES (`v6.1.0`)
 
-v6.0.0 introduces six deterministic, normative-additive capabilities to the Interceptor. All are backward-compatible — existing v5.x rule definitions continue to function without modification.
+ODGS `v6.1.0` provides deterministic runtime enforcement capabilities in `OdgsInterceptor` and `DataspaceRuntimePEP`:
 
 ### 5.1 SOFT_STOP Override-able Severity
 
@@ -289,7 +291,7 @@ The ODGS knowledge graph is published as a **W3C OWL/RDF formal ontology** (`1_N
 
 ## 9. CONCLUSION
 
-The ODGS Protocol v6.0.0 offers a sovereign validation layer and deterministic method for **Administrative Recusal**. By prioritizing "Silence over Error," it ensures that High-Risk AI systems cannot operate outside their legal safety envelope, providing the necessary technical safeguards for public sector algorithms and regulated industries.
+The ODGS Protocol v6.1.0 offers a vendor-neutral runtime enforcement layer and deterministic method for **Administrative Recusal** and **Cryptographic Attestation (`S-Cert`)**. By prioritizing "Silence over Error," it ensures that data pipelines and high-risk AI systems cannot operate outside their defined safety and contractual envelope.
 
 The protocol is:
 - **Vendor-neutral** — JSON configuration, adapter pattern for any platform
