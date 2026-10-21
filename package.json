@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetricProvenance/odgs-protocol.git"
+    "url": "https://github.com/MetricProvenance/odgs-dataspaces-bridge.git"
   },
   "keywords": [
     "data-governance",

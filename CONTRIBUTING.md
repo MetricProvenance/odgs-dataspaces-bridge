@@ -13,8 +13,8 @@ We welcome contributions in two main areas:
 
 1.  **Clone the Repo**:
     ```bash
-    git clone https://github.com/MetricProvenance/odgs-protocol.git
-    cd odgs-protocol
+    git clone https://github.com/MetricProvenance/odgs-dataspaces-bridge.git
+    cd odgs-dataspaces-bridge
     ```
 
 2.  **Install (Polyglot)**:
