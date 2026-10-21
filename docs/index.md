@@ -1,20 +1,32 @@
-# Open Data Governance Standard (ODGS) — Reference Architecture & Dataspace Profile (v6.1.0)
+# Open Data Governance Standard (ODGS) — Technical Documentation (`v6.1.0`)
 
-`odgs` (`v6.1.0`) is the open-source, Apache-2.0 reference implementation of the **Open Data Governance Standard (ODGS)**. It connects deterministic in-pipeline data-governance enforcement (`ISO/IEC 38505-1:2026`, `ISO/IEC 25012:2008`, `ISO 8000-8`) to open dataspace control planes and conformity assessment vocabularies:
+Welcome to the normative and reference implementation documentation for **ODGS `v6.1.0`**, the vendor-neutral specification and runtime engine for **in-pipeline semantic policy enforcement** and **cryptographic attestation (`S-Cert`)** across enterprise data pipelines and federated dataspaces.
 
-- **ISO/IEC JTC 1/SC 40 & SC 7 (`ISO/IEC 38505-1:2026`, `ISO/IEC TR 38505-2:2018`, `ISO/IEC 25012:2008`, `ISO 8000-8`, `ETSI EN 304 311`)**
-- **Eclipse Dataspace Working Group (`CAP v2.2.1`, `DRP`, `DSP`, `DCP`)**
-- **Gaia-X (`ODRL-VC Profile` & `Data Transfer Agent (DTA)` Phase 6)**
-- **IDSA Rulebook (`2026-3` Decentralized Observability §121)**
-- **W3C ODRL 2.2, W3C Verifiable Credentials v2.0 (`cred:Evidence`), W3C PROV-O & NIST OSCAL v1.1.2**
+![Two Complementary Governance Tracks](assets/fig1_two_tracks.svg)
 
-## Why Runtime Enforcement Complements Control-Plane Negotiation
+---
 
-Dataspace control planes (**Eclipse DSP/DCP**, **W3C ODRL 2.2**, **Eclipse DRP**, and the **Gaia-X Data Transfer Agent**) govern **pre-transfer access negotiation and credential verification**. Once the bytes land inside the consumer's data or AI pipeline, post-transfer usage obligations (`odrl:Duty`, `odrl:Prohibition`, `drp:environment.licenses`) and `ISO/IEC 25012:2008` data quality constraints must be enforced at the point of processing, and the consumer must return cryptographic proof of enforcement without exposing confidential data.
+## Documentation Navigation
 
-`odgs` provides:
+| Section | Focus | Standards & Specifications Covered |
+| :--- | :--- | :--- |
+| **[Getting Started & Quickstart](getting-started.md)** | Installation (`pip install odgs`), CLI commands, Python/Node.js quickstart, and enterprise verification suites | `OdgsInterceptor`, `DataspaceRuntimePEP`, CLI (`odgs`) |
+| **[5-Plane Architecture & Planes](architecture-and-planes.md)** | The 3-Layer / 5-Plane Architecture, `ISO/IEC 38505-1` *Evaluate–Direct–Monitor* model, and Trustworthy Data Transaction (`TDT`) sequence | `ISO/IEC 38505-1:2026`, `ISO/IEC 25012:2008`, `EN 18235`, `EAS 18425:2026` |
+| **[Conformance Levels (`L1` & `L2`)](conformance-levels.md)** | Normative requirements for `Level 1 Core` and `Level 2 Attested` implementations and mapping to `EAS 18425` (`CL0–CL5`) | `RFC 2119`, `RFC 8785 (JCS)`, `EAS 18425:2026`, `ISO/IEC 17000` |
+| **[Eclipse EDWG (`ODRL 2.2`, `CAP v2.2.1`, `DRP`)](eclipse-edwg.md)** | Compiling negotiated `W3C ODRL 2.2` agreements into runtime PEPs and projecting `S-Cert` receipts into `cap:Declaration` VCs | `W3C ODRL 2.2`, `Eclipse CAP v2.2.1`, `Eclipse DRP`, `W3C VC 2.0` |
+| **[Gaia-X Phase 6 & DTA Verification](gaia-x-dta.md)** | Post-transfer obligation enforcement, `ovc:Constraint` verification, and upstream Data Transfer Agent (`DTA`) provenance hash checks | `Gaia-X Architecture 25.11` (§4.8.4.2), `Gaia-X Trust Framework` |
+| **[IDSA Rulebook, W3C PROV-O & NIST OSCAL](idsa-prov-oscal.md)** | Decentralized observability (`correlation_id`), W3C PROV-O lineage export, and NIST OSCAL v1.1.2 assessment findings | `IDSA Rulebook 2026-3` (§121), `W3C PROV-O`, `NIST OSCAL v1.1.2` |
+| **[JSON Schemas, OWL 2 & LinkML](schemas-and-linkml.md)** | Normative Draft-07 JSON Schemas (`01`–`04`), W3C OWL 2 ontology, and LinkML dataspace metamodel | `JSON Schema Draft-07`, `W3C OWL 2`, `LinkML`, `JSON-LD 1.1` |
+| **[Python & Node.js API Reference](api-reference.md)** | Reference for `OdgsInterceptor`, `bind_odrl_policy`, `DataspaceRuntimePEP`, `verify_dta_provenance`, and conformity exporters | Python `3.10+`, Node.js `18+` |
 
-1. **ISO-Grounded Contextual Governance (`1_NORMATIVE_SPECIFICATION/schemas/`):** Separates corporate governance of data (`ISO/IEC 38505-1:2026` Evaluate–Direct–Monitor) from operational data management, binds all 60 data quality dimensions to `ISO/IEC 25012:2008` and `ISO 8000-8`, and resolves constraints contextually per business process (`context_bindings.json`).
-2. **Deterministic Policy Binding (`odgs.dataspace.odrl_binder`):** Compiles W3C ODRL 2.2 agreements, Gaia-X ODRL-VC constraints, and Eclipse DRP `delegationEvidence` tokens into deterministic boolean rules anchored by a SHA-256 `semantic_hash`.
-3. **Proportional In-Pipeline Enforcement (`OdgsInterceptor` & `DataspaceRuntimePEP`):** Evaluates payloads at runtime (`HARD_STOP` Administrative Recusal, `SOFT_STOP` with logged override token, `LOG_ONLY`) and emits a zero-knowledge **Semantic Certificate (`S-Cert`)**.
-4. **Standardised Evidence Export (`odgs.dataspace.cap_exporter` & `dta_verifier`):** Formats `S-Cert` receipts as **Eclipse CAP `cred:Evidence`**, verifies **Gaia-X DTA** post-transfer obligations, and exports **W3C PROV-O** and **NIST OSCAL** records.
+---
+
+## Core Architectural Principle
+
+Pre-transfer dataspace protocols (**Eclipse DSP/DCP**, **W3C ODRL 2.2**, **Eclipse DRP**, and the **Gaia-X Data Transfer Agent**) govern *negotiation and authorization before data moves*.
+
+**ODGS (`v6.1.0`)** governs **what happens at the moment data is processed inside the receiving or originating pipeline**:
+
+1. **Declarative Policy Binding:** Binds `ISO/IEC 25012:2008` data quality rules and compiled `W3C ODRL 2.2` obligations to physical execution contexts (`context_bindings.json`) per `ISO/IEC 38505-1:2026`.
+2. **Deterministic Runtime Enforcement:** Evaluates payloads in-memory and enforces `HARD_STOP` (`ProcessBlockedException` / `AdministrativeRecusalError`), `SOFT_STOP` (cryptographic `override_token` required), or `LOG_ONLY`.
+3. **Zero-Knowledge Semantic Certificate (`S-Cert`):** Emits an RFC 8785 (JCS) canonicalized cryptographic receipt binding `payload_hash`, `definition_hash`, and `config_hash`—proving conformance without exposing raw data payloads.

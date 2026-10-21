@@ -1,8 +1,9 @@
 # Open Data Governance Standard (ODGS) — Reference Specification & Runtime Engine (`v6.1.0`)
 
 [![Protocol](https://img.shields.io/badge/ODGS_Specification-v6.1.0-0055AA)](1_NORMATIVE_SPECIFICATION/SPECIFICATION.md)
+[![Documentation](https://img.shields.io/badge/Docs-GitHub_Pages-007ACC)](https://metricprovenance.github.io/odgs-dataspaces-bridge/)
 [![ISO Alignment](https://img.shields.io/badge/ISO%2FIEC-38505--1%3A2026_%7C_25012%3A2008-003399)](1_NORMATIVE_SPECIFICATION/SPECIFICATION.md)
-[![Dataspace Profile](https://img.shields.io/badge/Dataspace-W3C_ODRL_2.2_%7C_Eclipse_CAP_v2.2.1_%7C_Gaia--X_DTA-teal)](docs/index.md)
+[![Dataspace Profile](https://img.shields.io/badge/Dataspace-W3C_ODRL_2.2_%7C_Eclipse_CAP_v2.2.1_%7C_Gaia--X_DTA-teal)](https://metricprovenance.github.io/odgs-dataspaces-bridge/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18564270.svg)](https://doi.org/10.5281/zenodo.18564270)
 [![License](https://img.shields.io/badge/License-Apache_2.0-lightgrey)](LICENSE)
 

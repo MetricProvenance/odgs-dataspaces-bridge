@@ -57,10 +57,15 @@ dev = ["pytest>=7.4.0", "mkdocs>=1.5.0", "mkdocs-material>=9.5.0"]
 all = ["odgs[server,audit,dev]"]
 
 [project.urls]
-Repository = "https://github.com/MetricProvenance/odgs-protocol"
-Specification = "https://github.com/MetricProvenance/odgs-protocol/blob/main/1_NORMATIVE_SPECIFICATION/SPECIFICATION.md"
-Changelog = "https://github.com/MetricProvenance/odgs-protocol/blob/main/CHANGELOG.md"
-Issues = "https://github.com/MetricProvenance/odgs-protocol/issues"
+Documentation = "https://metricprovenance.github.io/odgs-dataspaces-bridge/"
+Repository = "https://github.com/MetricProvenance/odgs-dataspaces-bridge"
+Specification = "https://github.com/MetricProvenance/odgs-dataspaces-bridge/blob/main/1_NORMATIVE_SPECIFICATION/SPECIFICATION.md"
+Changelog = "https://github.com/MetricProvenance/odgs-dataspaces-bridge/blob/main/CHANGELOG.md"
+Issues = "https://github.com/MetricProvenance/odgs-dataspaces-bridge/issues"
+
+[tool.pytest.ini_options]
+pythonpath = ["2_INFORMATIVE_REFERENCE/src"]
+testpaths = ["tests"]
 
 [project.scripts]
 odgs = "odgs.cli:app"

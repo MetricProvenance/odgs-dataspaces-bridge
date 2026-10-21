@@ -1,33 +1,56 @@
-site_name: "ODGS Dataspace Enforcement & S-Cert Bridge"
-site_description: "Vendor-Neutral Runtime Policy Enforcement & Semantic Certification Bridge for W3C ODRL 2.2, Eclipse CAP/DRP, Gaia-X DTA, and IDSA"
-copyright: "Apache-2.0 License · ODGS Dataspace Bridge Contributors"
+site_name: Open Data Governance Standard (ODGS) v6.1.0
+site_description: Normative Specification & Reference Runtime for In-Pipeline Semantic Policy Enforcement and Cryptographic Attestation (S-Cert)
+site_url: https://metricprovenance.github.io/odgs-dataspaces-bridge/
+repo_url: https://github.com/MetricProvenance/odgs-dataspaces-bridge
+repo_name: MetricProvenance/odgs-dataspaces-bridge
 
 theme:
   name: material
-  language: en
   palette:
     - scheme: default
       primary: indigo
       accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
     - content.code.copy
 
+plugins:
+  - search
+
+nav:
+  - Overview: index.md
+  - Getting Started & Quickstart: getting-started.md
+  - Architecture & Standards:
+    - 5-Plane Architecture & TDT: architecture-and-planes.md
+    - Conformance Levels (L1 & L2): conformance-levels.md
+    - JSON Schemas, OWL 2 & LinkML: schemas-and-linkml.md
+  - Dataspace Interoperability:
+    - Eclipse EDWG (ODRL 2.2, CAP v2.2.1, DRP): eclipse-edwg.md
+    - Gaia-X Phase 6 & DTA Verification: gaia-x-dta.md
+    - IDSA Rulebook, W3C PROV-O & NIST OSCAL: idsa-prov-oscal.md
+  - Reference:
+    - Python & Node.js API Reference: api-reference.md
+
 markdown_extensions:
-  - admonition
   - tables
+  - admonition
   - attr_list
   - toc:
       permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
-
-nav:
-  - Overview: index.md
-  - Eclipse EDWG (CAP v2.2.1 & DRP): eclipse-edwg.md
-  - Gaia-X (ODRL-VC & DTA Phase 6): gaia-x-dta.md
-  - IDSA Rulebook, W3C PROV-O & NIST OSCAL: idsa-prov-oscal.md
-  - LinkML & JSON Schemas: schemas-and-linkml.md
+  - pymdownx.inlinehilite
